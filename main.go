@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/danielvolchek/stim-email/pkg/email"
@@ -37,7 +38,12 @@ func main() {
 	// On receiving HTML string
 
 	fmt.Println("Hello world")
-	email.CreateTemplateTest("Jacob", "Daniel")
+	// email.CreateTemplateTest("Jacob", "Daniel")
+	_, err := email.RegisterTemplate.WriteToTemplate(email.RegisterData{Username: "Daniel", Link: "https://google.com"})
+
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func (args *Arguments) checkArgs() {
