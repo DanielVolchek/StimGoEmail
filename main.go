@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"os"
+
+	"github.com/danielvolchek/stim-email/pkg/email"
 )
 
 type Arguments struct {
@@ -11,18 +13,20 @@ type Arguments struct {
 
 func main() {
 
-	args := Arguments{}
-	args.checkArgs()
+	// args.CmdArg
 
-	// If run with --generate-auth
-	// Hit db route and generate new auth token
-	// post on /auth
-	// Delete any other auth token
-
-	if args.generate_auth {
-		fmt.Println("Generate auth")
-		os.Exit(0)
-	}
+	// args := Arguments{}
+	// args.checkArgs()
+	//
+	// // If run with --generate-auth
+	// // Hit db route and generate new auth token
+	// // post on /auth
+	// // Delete any other auth token
+	//
+	// if args.generate_auth {
+	// 	fmt.Println("Generate auth")
+	// 	os.Exit(0)
+	// }
 
 	// else
 	// connect to SES
@@ -33,6 +37,7 @@ func main() {
 	// On receiving HTML string
 
 	fmt.Println("Hello world")
+	email.CreateTemplateTest("Jacob", "Daniel")
 }
 
 func (args *Arguments) checkArgs() {
@@ -46,5 +51,4 @@ func (args *Arguments) checkArgs() {
 		}
 
 	}
-
 }
