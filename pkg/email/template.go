@@ -7,7 +7,7 @@ import (
 	"log"
 )
 
-const HARD_CODED_PATH = "/Users/danielvolchek/code/stimstore/stim-email/templates/test.html"
+const HARD_CODED_PATH = "/Users/danielvolchek/code/stimstore/stim-email/assets/templates/test.html"
 
 func CreateTemplateTest(name, me string) {
 	template, err := template.ParseFiles(HARD_CODED_PATH)
