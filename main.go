@@ -5,7 +5,9 @@ import (
 	"log"
 	"os"
 
+	"github.com/danielvolchek/stim-email/pkg/auth"
 	"github.com/danielvolchek/stim-email/pkg/email"
+	"github.com/joho/godotenv"
 )
 
 type Arguments struct {
@@ -38,6 +40,13 @@ func main() {
 	// On receiving HTML string
 
 	fmt.Println("Hello world")
+
+	godotenv.Load(".env")
+
+	token := os.Getenv("token")
+
+	auth.ValidateToken(token)
+
 	// email.CreateTemplateTest("Jacob", "Daniel")
 	_, err := email.RegisterTemplate.WriteToTemplate(email.RegisterData{Username: "Daniel", Link: "https://google.com"})
 
