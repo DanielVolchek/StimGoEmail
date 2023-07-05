@@ -1,18 +1,26 @@
 package auth
 
-// generates auth token to use for receiving emails
-
 import (
 	"fmt"
-
-	"github.com/google/uuid"
+	"log"
+	"net/http"
 )
 
-// generate token, write over previous token
-func GenerateToken() uuid.UUID {
-	uuid := uuid.New()
+// make a request to db-server to check if my provided token is valid
 
-	fmt.Printf("token is\n%s\n", uuid)
+const Base = "http://localhost:8080"
 
-	return uuid
+func ValidateToken(token string) {
+	res, err := http.Get(fmt.Sprintf("%s/admin/servertoken?token=%s", Base, token))
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	status := res.StatusCode
+
+	if status != 200 {
+		log.Fatal("Server auth token is not valid, please regenerate in admin dashboard and provide to .env")
+	}
+
 }
