@@ -1,4 +1,10 @@
-package main
+package SES
 
-func connectSES() {
+type awsKeys struct {
+	accessID  string
+	secretKey string
+}
+
+func connectSES(keys awsKeys) {
+
 }
