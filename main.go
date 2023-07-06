@@ -43,7 +43,7 @@ func main() {
 
 	godotenv.Load(".env")
 
-	token := os.Getenv("token")
+	token := os.Getenv("SERVER_SECRET")
 
 	auth.ValidateToken(token)
 
